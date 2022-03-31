@@ -6,7 +6,7 @@ const fsPromises = fs.promises;
 const { containsText } = require("./utils");
 const { createReservation, createTable, seatReservation } = require("./api");
 
-const baseURL = process.env.BASE_URL || "http://localhost:3000";
+const baseURL = "https://resturant-cap2.herokuapp.com/" || "http://localhost:3000";
 
 const onPageConsole = (msg) =>
   Promise.all(msg.args().map((event) => event.jsonValue())).then((eventJson) =>
