@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { Link, useLocation, useHistory } from "react-router-dom";
 import { updateStatus } from "../utils/api";
+//test 1
 
+//test 2
 export default function Reservation({ reservation_id, first_name, last_name, mobile_number, reservation_time, people, status }) {
     
     const [cancelError, setCancelError] = useState([]);
