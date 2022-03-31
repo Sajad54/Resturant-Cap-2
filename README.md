@@ -91,7 +91,6 @@ This will display any matching results.
 1. Select a table from the drop-down menu.
 1. Click `submit` to seat the reservation at the selected table.
 
-![seat](./screenshots/seat.png)
 
 Once a reservation is seated, the reservation status will change from `booked` to `seated`.
 
