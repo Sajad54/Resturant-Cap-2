@@ -2,6 +2,10 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import ReservationForm from "./ReservationForm";
 // defines the New Reservation page
+
+//test 1
+
+//test 2
 export default function EditReservation() {
 
     const { reservation_id } = useParams();
