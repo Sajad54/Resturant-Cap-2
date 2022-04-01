@@ -1,13 +1,13 @@
 import React from "react";
 import Reservation from "./Reservation";
-import formatReservationPhone from "../utils/format-reservation-phone";
+// import formatReservationPhone from "../utils/format-reservation-phone";
 
 export default function Reservations({ reservations }) {
   const list = reservations.map((reservation) => {
     // TODO:
     // format phone number before we list it on the dashboard
-    formatReservationPhone(reservation.mobile_number);
-    console.log("line 10 Reservation.js", reservation.mobile_number);
+    // formatReservationPhone(reservation.mobile_number);
+    // console.log("line 10 Reservation.js", reservation.mobile_number);
     return (
       <Reservation
         key={reservation.reservation_id}
