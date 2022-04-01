@@ -11,7 +11,7 @@ export default function Reservations({ reservations }) {
     return (
       <Reservation
         key={reservation.reservation_id}
-        reservation_id={reservation.reservation_id}
+        reservation_id={reservation.reservation_id}git
         first_name={reservation.first_name}
         last_name={reservation.last_name}
         mobile_number={reservation.mobile_number}
