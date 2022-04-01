@@ -3,6 +3,33 @@ import { useHistory } from "react-router-dom";
 import { postReservation, readReservation, putReservation } from "../utils/api";
 import ErrorAlert from "../layout/ErrorAlert";
 
+function formatPhoneNumber(value) {
+    // if input value is falsy eg if the user deletes the input, then just return
+    if (!value) return value;
+  
+    // clean the input for any non-digit values.
+    const phoneNumber = value.replace(/[^\d]/g, "");
+  
+    // phoneNumberLength is used to know when to apply our formatting for the phone number
+    const phoneNumberLength = phoneNumber.length;
+  
+    // we need to return the value with no formatting if its less then four digits
+    // this is to avoid weird behavior that occurs if you  format the area code to early
+    if (phoneNumberLength < 4) return phoneNumber;
+  
+    // if phoneNumberLength is greater than 4 and less the 7 we start to return
+    // the formatted number
+    if (phoneNumberLength < 7) {
+      return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3)}`;
+    }
+    // finally, if the phoneNumberLength is greater then seven, we add the last
+    // bit of formatting and return it.
+    return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(
+      3,
+      6
+    )}-${phoneNumber.slice(6, 10)}`;
+  }
+
 export default function ReservationForm({ reservation_id }) {
     const initialFormState = {
         first_name: "",
@@ -15,6 +42,7 @@ export default function ReservationForm({ reservation_id }) {
 
     const [form, setForm] = useState({...initialFormState});
     const [reservationsError, setReservationsError] = useState([]);
+    // const [phonevalue, setPhoneValue] = useState("");
    
     const history = useHistory();
 
@@ -37,7 +65,6 @@ export default function ReservationForm({ reservation_id }) {
     }, [reservation_id]);
 
     const handleChange = ({ target }) => {
-
         let name = target.name;
         let value = target.value;
                         
@@ -72,6 +99,13 @@ export default function ReservationForm({ reservation_id }) {
                 setReservationsError(["Reservations are only allowed between 10:30am and 9:30pm."]);
             }
         }
+
+        if (name === "mobile_number") {
+            // this is where we'll call the phoneNumberFormatter function
+            form.mobile_number = formatPhoneNumber(value);
+            console.log('formatPhoneNumber(value) line 106: ', formatPhoneNumber(value));
+            console.log('form.mobile_number line 107: ', form.mobile_number);
+        };
         // set the form state
         setForm({
             ...form,
@@ -82,6 +116,7 @@ export default function ReservationForm({ reservation_id }) {
     const handleSubmit = (event) => {
         event.preventDefault();
         const abortController = new AbortController();
+
         // POST request (new reservation)
         if (!reservation_id) {
             async function postData() {
@@ -149,7 +184,7 @@ export default function ReservationForm({ reservation_id }) {
                     <input 
                         className="form-control"
                         type="tel"
-                        pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+                        pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                         name="mobile_number"
                         id="mobile_number"
                         placeholder="555-555-5555"
