@@ -10,6 +10,9 @@ const REACT_APP_API_BASE_URL = "https://restaurant-backend-client.herokuapp.com"
 /**
  * Defines the default headers for these functions to work with `json-server`
  */
+
+
+// teddy help with heroku
 const headers = new Headers();
 headers.append("Content-Type", "application/json");
 
