@@ -1,4 +1,4 @@
-function formatPhoneNumber(reservation) {
+function formatPhoneNumber(value) {
     // if input value is falsy eg if the user deletes the input, then just return
     if (!value) return value;
   
