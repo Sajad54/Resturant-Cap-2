@@ -1,6 +1,6 @@
 import React from "react";
 import Reservation from "./Reservation";
-// import formatReservationPhone from "./format-reservation-phone";
+import formatReservationPhone from "./format-reservation-phone";
 export default function Reservations({ reservations }) {
 
     const list = reservations.map(reservation => {
