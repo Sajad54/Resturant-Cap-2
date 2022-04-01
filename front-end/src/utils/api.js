@@ -4,6 +4,7 @@
  */
 import formatReservationDate from "./format-reservation-date";
 import formatReservationTime from "./format-reservation-date";
+import formatReservationPhone from "./format-reservation-phone";
 
 const REACT_APP_API_BASE_URL = "https://restaurant-backend-client.herokuapp.com" || "http://localhost:5000";
 
@@ -67,7 +68,8 @@ export async function listReservations(params, signal) {
   );
   return await fetchJson(url, { headers, signal }, [])
     .then(formatReservationDate)
-    .then(formatReservationTime);
+    .then(formatReservationTime)
+    .then(formatReservationPhone);
 }
 
 // posts a new reservation to the database
