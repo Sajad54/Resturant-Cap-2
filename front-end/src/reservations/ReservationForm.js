@@ -148,7 +148,8 @@ export default function ReservationForm({ reservation_id }) {
                     <label htmlFor="mobile_number">Mobile Phone Number</label>
                     <input 
                         className="form-control"
-                        type="text"
+                        type="tel"
+                        pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
                         name="mobile_number"
                         id="mobile_number"
                         placeholder="555-555-5555"
