@@ -104,8 +104,6 @@ export default function ReservationForm({ reservation_id }) {
             // pattern for input field if you want it....pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
             // this is where we'll call the phoneNumberFormatter function
             form.mobile_number = formatPhoneNumber(value);
-            console.log('formatPhoneNumber(value) line 106: ', formatPhoneNumber(value));
-            console.log('form.mobile_number line 107: ', form.mobile_number);
         };
         // set the form state
         setForm({
